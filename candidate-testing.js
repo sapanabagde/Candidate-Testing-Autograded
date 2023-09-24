@@ -44,21 +44,35 @@ function askQuestion() {
 }
 
 function gradeQuiz(candidateAnswers) {
+  let score = 0;
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
   // if (candidateAnswer === correctAnswer ) {
   //    console.log("You are Passed")
   // } else {
   //   console.log("You are Failed")
   // }
+  console.log("Candidate Name: " + candidateName);
   for (i = 0; i < questions.length; i++ ){
     console.log(questions[i]);
     console.log("Your Answer: " + candidateAnswers[i]);
     console.log("Correct Answer: " + correctAnswers[i]);
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()){
+      
+      score+=1;
+    }
   }
   
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+  let grade = 0;  //TODO 3.2 use this variable to calculate the candidates score.
 
+  grade = (score / questions.length) * 100;
+  console.log(`>>> Overall Grade: ${grade}% (${score} of ${questions.length} responses correct) <<<`);
+  if (grade >= 80){
+    console.log(`>>> Status: PASSED <<<`);
+ }
+  else{
+      console.log(`>>> Status: FAILED <<<`);
+  }
 
   return grade;
 }
